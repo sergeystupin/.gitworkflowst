@@ -14,5 +14,9 @@ jobs:
              "description": "${{ github.event.issue.body }}",
              "number" : "${{ github.event.issue.number }}",
              "title" : "${{ github.event.issue.title }}",
+             if [[ ! $title =~ ^.*:\ .*$ ]]; then
+              echo "Bad issue title"
+              exit 1
+            fi
              "url" : "${{ github.event.issue.html_url }}"
          }'
